@@ -150,10 +150,11 @@ public class LFUCache {
     }
 
     public static void main(String[] args){
-        LFUCache cache = new LFUCache(10);
+        LFUCache cache = new LFUCache(3);
         cache.put(2,5);
         cache.put(3,5);
         cache.put(4,9);
-        System.out.println(cache.get(4));
+        cache.put(5,6);
+        System.out.println(cache.get(2));
     }
 }
