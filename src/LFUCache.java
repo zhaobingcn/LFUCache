@@ -8,7 +8,7 @@ public class LFUCache {
 
     public LFUCache(int capacity){
         this.capacity = capacity;
-        map = new HashMap<Integer, Node>();
+        map = new HashMap<Integer, Node>(capacity);
     }
 
     private void oneStepUp(Node n){
@@ -24,7 +24,7 @@ public class LFUCache {
                 n.nq.next.head.next = n;
                 n.nq.next.head = n;
                 n.nq = n.nq.next;
-            }else if(n.nq.tail.frequency > n.frequency){
+            }else if(n.nq.next.tail.frequency > n.frequency){
                 if(!singleNodeQ){
                     removeNode(n);
                     NodeQueue nnq = new NodeQueue(n.nq.next, n.nq, n, n);
